@@ -39,5 +39,9 @@ Binding peaks are in the narrow peak file format
 More options for output format please refer to the spp R package
 
 
-An example of the command:
+**An example of the command:**  
 `Rscript ./run_Bay2Ctrls.R -ip=test_data/a.rep0.tagAlign.gz -mock=test_data/EMb1.rep0.tagAlign.gz -input4ip=test_data/ap.rep0.tagAlign.gz -input4mock=test_data/EMb1p.rep0.tagAlign.gz -npeak=30000 -x=-500:85 -s=0:5:1200 -odir=./ -p=1 -filtchr='.*_[CD].*' -savr -savp -rf -out=test.cc -npeak=30000 -totReads=10000000 -mcstep=1000000`
+
+### Data download
+Download the test data [here](http://archive2.gersteinlab.org/proj/MockOrNot/Bay2Ctrls/test_data/)  
+All raw and processed data are available [here](http://archive2.gersteinlab.org/proj/MockOrNot/Data/)
