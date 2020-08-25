@@ -1,11 +1,12 @@
-## Bay2Ctrls: bayesian model to integrate two types of ChIP-seq controls for binding site detection
+## Bay2Ctrls: Bayesian model to integrate two types of ChIP-seq controls for binding site detection
+Two types of controls were widely used for ChIP-seq: DNA input controls and mock IP controls. This software was developed to combine both for better binding site detection.
 
-This R package is based on spp-1.14. And the wrapper script (run_Bay2Ctrls.R) for the R package is adapted from the ENCODE ChIP-seq pipeline. 
+This R package is based on SPP, and the wrapper script (run_Bay2Ctrls.R) for the R package is adapted from the ENCODE ChIP-seq pipeline. 
 
 ### DATA INPUT
-This software require one IP (i) and two set of controls:
-The first control is the DNA input (di) generated for the IP experiment. This control (di) and the IP (i) are the results from conventional ChIP-seq.
-The second control contains a mock IP (m) and its corresponding DNA input (dm)
+The software accecpt four files as input:  
+The first set is the DNA input controlled IP experiment. This DNA control (di) and the IP (i) are the results from conventional ChIP-seq.  
+The second set is the mock IP experiment. This includes the mock IP (m) and its corresponding DNA input (dm).
 
 ### DATA OUTPUT
 Binding peaks are in the narrow peak file format
@@ -18,15 +19,15 @@ All raw and processed data are available [here](http://archive2.gersteinlab.org/
 - [SPP](https://cran.r-project.org/web/packages/spp/index.html)
 - [caTools](https://cran.r-project.org/web/packages/caTools/index.html)
 
-### INSTALLATION
-`devtools::install_github("gersteinlab/Bay2Ctrls")`
-
 Tested with
 - R 3.6.1
 - SPP 1.16.0
 - caTools 1.18.0
 
 Please note that you might encounter a lot of issues if you want to install SPP from source. We recommend you install it via R `install.package("spp")`.
+
+### INSTALLATION
+`devtools::install_github("gersteinlab/Bay2Ctrls")`
 
 ### USAGE
 Run the wrapper script **run_Bay2Ctrls.R** as the following:
@@ -35,9 +36,8 @@ Run the wrapper script **run_Bay2Ctrls.R** as the following:
 **An example of the command:**  
 `Rscript run_Bay2Ctrls.R -ip=test_data/a.rep0.tagAlign.gz -mock=test_data/EMb1.rep0.tagAlign.gz -input4ip=test_data/ap.rep0.tagAlign.gz -input4mock=test_data/EMb1p.rep0.tagAlign.gz -npeak=30000 -x=-500:85 -s=0:5:1200 -odir=./ -filtchr='.*_[CD].*' -savr -savp -rf -out=test.cc -npeak=30000 -totReads=10000000 -mcstep=1000000`
 
-You might also use the R package Bay2Ctrls in your scripts. See man pages for individual functions(TODO).
-
-KNOWN ISSUE: You might encounter errors if runned with multi-processors. To be fix.(TODO)
+You might also use the R package Bay2Ctrls in your scripts. See man pages for individual functions(TODO).  
+KNOWN ISSUE: You might encounter errors if running with multi-processors. To be fix.(TODO)
 
 ### Paramters specific for Bay2Ctrls
 <pre>
