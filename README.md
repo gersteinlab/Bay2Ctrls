@@ -2,9 +2,6 @@
 
 This R package is based on spp-1.14. And the wrapper script (run_Bay2Ctrls.R) for the R package is adapted from the ENCODE ChIP-seq pipeline. 
 
-### INSTALLATION
-`R CMD INSTALL Bay2Ctrls-0.1.tar.gz`
-
 ### DATA INPUT
 This software require one IP (i) and two set of controls:
 The first control is the DNA input (di) generated for the IP experiment. This control (di) and the IP (i) are the results from conventional ChIP-seq.
@@ -13,8 +10,34 @@ The second control contains a mock IP (m) and its corresponding DNA input (dm)
 ### DATA OUTPUT
 Binding peaks are in the narrow peak file format
 
+### Data download
+Download the test data [here](http://archive2.gersteinlab.org/proj/MockOrNot/Bay2Ctrls/test_data/)  
+All raw and processed data are available [here](http://archive2.gersteinlab.org/proj/MockOrNot/Data/)
+
+### Dependence
+- [SPP](https://cran.r-project.org/web/packages/spp/index.html)
+- [caTools](https://cran.r-project.org/web/packages/caTools/index.html)
+
+### INSTALLATION
+`devtools::install_github("gersteinlab/Bay2Ctrls")`
+
+Tested with
+- R 3.6.1
+- SPP 1.16.0
+- caTools 1.18.0
+
+Please note that you might encounter a lot of issues if you want to install SPP from source. We recommend you install it via R `install.package("spp")`.
+
 ### USAGE
-`R run_Bay2Ctrls.R` 
+Run the wrapper script **run_Bay2Ctrls.R** as the following:
+`Rscript run_Bay2Ctrls.R -ip=<IP_file> -mock=<mockIP_control_file> -input4ip=<DNA_input_control_file> -input4mock=<DNA_input_control_for_mockIP_file> [Bay2Ctrls_parameters, ...] [SPP_parameters, ...]`
+
+**An example of the command:**  
+`Rscript run_Bay2Ctrls.R -ip=test_data/a.rep0.tagAlign.gz -mock=test_data/EMb1.rep0.tagAlign.gz -input4ip=test_data/ap.rep0.tagAlign.gz -input4mock=test_data/EMb1p.rep0.tagAlign.gz -npeak=30000 -x=-500:85 -s=0:5:1200 -odir=./ -filtchr='.*_[CD].*' -savr -savp -rf -out=test.cc -npeak=30000 -totReads=10000000 -mcstep=1000000`
+
+You might also use the R package Bay2Ctrls in your scripts. See man pages for individual functions(TODO).
+
+KNOWN ISSUE: You might encounter errors if runned with multi-processors. To be fix.(TODO)
 
 ### Paramters specific for Bay2Ctrls
 <pre>
@@ -36,12 +59,4 @@ Binding peaks are in the narrow peak file format
 -odir          output directory  
 -p             number of processors to be used
 </pre>
-More options for output format please refer to the spp R package
-
-
-**An example of the command:**  
-`Rscript ./run_Bay2Ctrls.R -ip=test_data/a.rep0.tagAlign.gz -mock=test_data/EMb1.rep0.tagAlign.gz -input4ip=test_data/ap.rep0.tagAlign.gz -input4mock=test_data/EMb1p.rep0.tagAlign.gz -npeak=30000 -x=-500:85 -s=0:5:1200 -odir=./ -p=1 -filtchr='.*_[CD].*' -savr -savp -rf -out=test.cc -npeak=30000 -totReads=10000000 -mcstep=1000000`
-
-### Data download
-Download the test data [here](http://archive2.gersteinlab.org/proj/MockOrNot/Bay2Ctrls/test_data/)  
-All raw and processed data are available [here](http://archive2.gersteinlab.org/proj/MockOrNot/Data/)
+More options for output format please refer to the spp R package [github](https://github.com/hms-dbmi/spp) or [CRAN](https://cran.r-project.org/web/packages/spp/index.html)
