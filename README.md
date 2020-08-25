@@ -30,7 +30,7 @@ Please note that you might encounter a lot of issues if you want to install SPP 
 `devtools::install_github("gersteinlab/Bay2Ctrls")`
 
 ### USAGE
-Run the wrapper script **run_Bay2Ctrls.R** as the following:
+Run the wrapper script **run_Bay2Ctrls.R** as the following:  
 `Rscript run_Bay2Ctrls.R -ip=<IP_file> -mock=<mockIP_control_file> -input4ip=<DNA_input_control_file> -input4mock=<DNA_input_control_for_mockIP_file> [Bay2Ctrls_parameters, ...] [SPP_parameters, ...]`
 
 **An example of the command:**  
