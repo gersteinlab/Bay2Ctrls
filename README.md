@@ -11,11 +11,11 @@ The second set is the mock IP experiment. This includes the mock IP (m) and its 
 ### DATA OUTPUT
 Binding peaks are in the narrow peak file format
 
-### Data download
+### DATA DOWNLOAD
 Download the test data [here](http://archive2.gersteinlab.org/proj/MockOrNot/Bay2Ctrls/test_data/)  
 All raw and processed data are available [here](http://archive2.gersteinlab.org/proj/MockOrNot/Data/)
 
-### Dependence
+### DEPENDENCE
 - [SPP](https://cran.r-project.org/web/packages/spp/index.html)
 - [caTools](https://cran.r-project.org/web/packages/caTools/index.html)
 
@@ -33,13 +33,13 @@ Please note that you might encounter a lot of issues if you want to install SPP 
 Run the wrapper script **run_Bay2Ctrls.R** as the following:  
 `Rscript run_Bay2Ctrls.R -ip=<IP_file> -mock=<mockIP_control_file> -input4ip=<DNA_input_control_file> -input4mock=<DNA_input_control_for_mockIP_file> [Bay2Ctrls_parameters, ...] [SPP_parameters, ...]`
 
-**An example of the command:**  
+##### Example  
 `Rscript run_Bay2Ctrls.R -ip=test_data/a.rep0.tagAlign.gz -mock=test_data/EMb1.rep0.tagAlign.gz -input4ip=test_data/ap.rep0.tagAlign.gz -input4mock=test_data/EMb1p.rep0.tagAlign.gz -npeak=30000 -x=-500:85 -s=0:5:1200 -odir=./ -filtchr='.*_[CD].*' -savr -savp -rf -out=test.cc -npeak=30000 -totReads=10000000 -mcstep=1000000`
 
 You might also use the R package Bay2Ctrls in your scripts. See man pages for individual functions(TODO).  
 KNOWN ISSUE: You might encounter errors if running with multi-processors. To be fix.(TODO)
 
-### Paramters specific for Bay2Ctrls
+##### Paramters specific for Bay2Ctrls
 <pre>
 -ip            a *.tagAlign.gz file containing mapped reads from the IP experiment (i)  
 -mock          a *.tagAlign.gz file containing mapped reads from the mock IP experiment (m)  
@@ -49,7 +49,7 @@ KNOWN ISSUE: You might encounter errors if running with multi-processors. To be 
 -mcstep        simulation steps for the Bayesian model, e.g. -mcstep=1000000
 </pre>
 
-### Intrinsic parameters of SPP
+##### Intrinsic parameters of SPP
 <pre>
 -npeak         the number of total narrow peaks to be output, e.g. -npeak=30000  
 -x             avoid phantom peaks, e.g. -x=-500:85  
