@@ -756,7 +756,7 @@ if (! is.na(iparams$input4mock.file)) {
 }
 
 # Open multiple processes if required
-if (is.na(iparams$n.nodes)) {
+if (is.na(iparams$n.nodes) || iparams$n.nodes == 1) {
     cluster.nodes <- NULL
 } else {
     cat("loading snow\n")
@@ -780,7 +780,7 @@ crosscorr <- get.binding.characteristics(ip.data,
         accept.all.tags=T,
         cluster=cluster.nodes)
 
-if (!is.na(iparams$n.nodes)) {
+if (!is.na(iparams$n.nodes) && iparams$n.nodes != 1) {
     stopCluster(cluster.nodes)
 }
 
@@ -932,7 +932,7 @@ if ( !is.na(iparams$output.npeak.file) || !is.na(iparams$output.rpeak.file) ) {
     }
 
     # Open multiple processes if required
-    if (is.na(iparams$n.nodes)) {
+    if (is.na(iparams$n.nodes) || iparams$n.nodes == 1) {
         cluster.nodes <- NULL
     } else {
         cluster.nodes <- makeCluster(iparams$n.nodes,type="SOCK")
@@ -961,7 +961,7 @@ if ( !is.na(iparams$output.npeak.file) || !is.na(iparams$output.rpeak.file) ) {
         stop("-rgn= parameter is missing mock or input?")
     }
 
-        if (!is.na(iparams$n.nodes)) {
+        if (!is.na(iparams$n.nodes) && iparams$n.nodes != 1) {
             stopCluster(cluster.nodes)
         }
         cat(paste("Detected",sum(unlist(lapply(narrow.peaks$npl,function(d) length(d$x)))),"peaks"),"\n",file=stdout())
@@ -995,7 +995,7 @@ if ( !is.na(iparams$output.npeak.file) || !is.na(iparams$output.rpeak.file) ) {
             stop('chip-seq data file prolem')
         }
         narrow.peaks <- find.binding.positions(signal.data=data.a,control.data=data.ap,fdr=iparams$fdr,method=tag.lwcc,whs=crosscorr$whs,cluster=cluster.nodes,tec.filter=T,enrichment.z=0,min.thr=0,background.density.scaling = T,min.mle.threshold=0,e.value=1000000000,enrichment.background.scales=c(1))
-        if (!is.na(iparams$n.nodes)) {
+        if (!is.na(iparams$n.nodes) && iparams$n.nodes != 1) {
             stopCluster(cluster.nodes)
         }
         cat(paste("Detected",sum(unlist(lapply(narrow.peaks$npl,function(d) length(d$x)))),"peaks"),"\n",file=stdout())
@@ -1046,3 +1046,4 @@ whs <- round(crosscorr$whs)
 cat("whs: ")
 cat(whs)
 cat("\n")
+

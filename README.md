@@ -37,7 +37,6 @@ Run the wrapper script **run_Bay2Ctrls.R** as the following:
 `Rscript run_Bay2Ctrls.R -ip=test_data/a.rep0.tagAlign.gz -mock=test_data/EMb1.rep0.tagAlign.gz -input4ip=test_data/ap.rep0.tagAlign.gz -input4mock=test_data/EMb1p.rep0.tagAlign.gz -npeak=30000 -x=-500:85 -s=0:5:1200 -odir=./ -filtchr='.*_[CD].*' -savr -savp -rf -out=test.cc -npeak=30000 -totReads=10000000 -mcstep=1000000`
 
 You might also use the R package Bay2Ctrls in your scripts. See man pages for individual functions(TODO).  
-KNOWN ISSUE: You might encounter errors if running with multi-processors. To be fix.(TODO)
 
 ##### Paramters specific for Bay2Ctrls
 <pre>
