@@ -1,0 +1,25 @@
+Package: Bay2Ctrls
+Type: Package
+Title: Bayesian model to integrate two types of ChIP-seq controls for binding site detection
+Version: 0.2
+Authors@R: c( 
+    person(given = "Jinrui",
+           family = "Xu",
+           role = c("aut", "cre"),
+           email = "jinrui.xu@yale.edu"),
+	person(given = "Jiahao",
+           family = "Gao",
+           role = c("aut"),
+           email = "jiahao.gao@yale.edu")
+           )
+Maintainer: The package maintainer <jinrui.xu@yale.edu>
+Description: This software require one IP (i) and two set of controls: The first control is the DNA input (di) generated for the IP experiment. This control (di) and the IP (i) are the results from conventional ChIP-seq. The second control contains a mock IP (m) and its corresponding DNA input (dm).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    spp,
+    caTools,
+    stats,
+    utils
+RoxygenNote: 7.1.1
